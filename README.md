@@ -1,7 +1,8 @@
-[Uploading TECHNICAL_DOCUMENTATION_ZH.md…]()
 # go2-convex-mpc / VBot MPC 技术文档
 
-> 本文档基于仓库源码与运行脚本整理，覆盖算法原理、公式推导、项目结构、运行方法及关键参数说明。
+A Convex Model Predictive Control (MPC) stack for quadruped robots, originally developed for Unitree Go2 and adapted for VBot.
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
 ---
 
@@ -9,7 +10,7 @@
 
 ### 1.1 项目来源与目标
 
-本项目是一个**四足机器人凸模型预测控制（Convex MPC）**控制栈，最初面向 **Unitree Go2** 四足机器人开发，后来在 `VBot` 四足机器人上进行了适配与部署验证。
+本项目是一个**四足机器人凸模型预测控制**（Convex MPC）控制栈，最初面向 **Unitree Go2** 四足机器人开发，后来在 `VBot` 四足机器人上进行了适配与部署验证。
 
 项目核心目标是：
 
