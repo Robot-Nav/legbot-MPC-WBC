@@ -24,6 +24,7 @@ https://github.com/user-attachments/assets/6c744851-63ee-4630-8fd7-0f04a32facda
 
 https://github.com/user-attachments/assets/d9816d35-9ff2-4628-94db-f3e3b26c3b51
 
+
 行走
 
 
@@ -31,11 +32,16 @@ sim2real演示
 
 
 
-https://github.com/user-attachments/assets/a360ee6a-e0d4-436f-8794-5670a9e3a0ea
+https://github.com/user-attachments/assets/1cb58046-64c2-49ea-bd32-d9af469e2309
+
+
 
 原地踏步
 
-https://github.com/user-attachments/assets/c6f30c1f-8ebe-4a16-9d67-2a2de3d65713
+
+https://github.com/user-attachments/assets/55c45696-b9cd-4c8b-9788-32f8625bca62
+
+
 
 行走
 
