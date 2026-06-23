@@ -767,8 +767,8 @@ $$\tau_{\text{motor}} = \text{scale} \cdot \tau_{\text{model}}$$
 1. **降低速度限幅**（`X_VEL_LIMIT`、`Y_VEL_LIMIT`、`YAW_RATE_LIMIT`）；
 2. **调整期望高度** `DEFAULT_Z_POS`；
 3. **调整步态频率** `GAIT_HZ` 与 duty；
-4. **调整 MPC 权重** $\mathbf{Q}$、$\mathbf{R}$；
-5. **调整摆腿高度** `HEIGHT_SWING` 与阻抗 $\mathbf{K}_p$/$\mathbf{K}_d$；
+4. **调整 MPC 权重** $\mathbf{Q}$ 、 $\mathbf{R}$；
+5. **调整摆腿高度** `HEIGHT_SWING` 与阻抗  $\mathbf{K}_p$/$\mathbf{K}_d$；
 6. **检查摩擦系数** $\mu$ 是否与 MuJoCo 场景一致。
 
 ### 10.2 实物部署前 checklist
