@@ -1,8 +1,33 @@
 # go2-convex-mpc / VBot MPC 技术文档
 
-A Convex Model Predictive Control (MPC) stack for quadruped robots, originally developed for Unitree Go2 and adapted for VBot.
+四足机器人凸模型预测控制（Convex MPC）控制栈，最初面向 Unitree Go2 开发，后适配 VBot 机器人。
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+[![MuJoCo](https://img.shields.io/badge/MuJoCo-2.3.3+-orange.svg)](https://github.com/google-deepmind/mujoco)
+[![Pinocchio](https://img.shields.io/badge/Pinocchio-2.6.20+-green.svg)](https://github.com/stack-of-tasks/pinocchio)
+[![CasADi](https://img.shields.io/badge/CasADi-3.6.3+-red.svg)](https://web.casadi.org/)
+[![OSQP](https://img.shields.io/badge/OSQP-0.6.2+-yellow.svg)](https://osqp.org/)
+
+---
+
+**相关文章：**
+- [四足机器人MPC控制：算法原理与实现](https://blog.csdn.net/qq_56908984/article/details/161836928?spm=1011.2415.3001.5331)
+- [四足机器人MPC控制：项目结构与运行指南](https://blog.csdn.net/qq_56908984/article/details/161836868?spm=1011.2415.3001.5331)
+
+---
+sim2sim演示
+
+
+
+
+
+
+
+sim2real演示
+
+
+
+> PS：原项目提出MPC求解总体过程约2.7ms，但后期sim2real测试中，整体控制循环包含了MPC求解、轨迹生成、状态更新以及通信延时等等，实机时间约60ms，约15hz，因此对源代码进行了代码优化以及参数调整，例如摆腿过程等，最后可达30-40hz，满足实时性；
 
 ---
 
@@ -743,12 +768,12 @@ $$\tau_{\text{motor}} = \text{scale} \cdot \tau_{\text{model}}$$
 
 ### 10.2 实物部署前 checklist
 
-- [ ] 电机方向、零点、力矩方向已验证；
-- [ ] 仿射标定文件 `vbot_real_joint_affine.yaml` 已标定；
-- [ ] 急停、通信超时、力矩限幅、关节限位保护已启用；
-- [ ] 先在悬空/吊绳/保护架下测试；
-- [ ] 从 all-stance 站立开始，再逐步开启 swing；
-- [ ] 日志CSV与 summary 已配置，便于离线分析。
+- 电机方向、零点、力矩方向已验证；
+- 仿射标定文件 `vbot_real_joint_affine.yaml` 已标定；
+- 急停、通信超时、力矩限幅、关节限位保护已启用；
+- 先在悬空/吊绳/保护架下测试；
+- 从 all-stance 站立开始，再逐步开启 swing；
+- 日志CSV与 summary 已配置，便于离线分析。
 
 ---
 
@@ -762,3 +787,13 @@ $$\tau_{\text{motor}} = \text{scale} \cdot \tau_{\text{model}}$$
 - OSQP：https://osqp.org/
 
 本项目最初作为 UC Berkeley MEng 机械工程顶点项目开发，后续适配至 VBot 真实四足机器人平台。
+
+---
+
+## 致谢
+
+本项目基于 [go2-convex-mpc](https://github.com/elijah-waichong-chan/go2-convex-mpc) 开发，感谢原作者的开源贡献。
+
+
+Uploading 录屏 2026-06-09 11-55-21.mp4…
+
