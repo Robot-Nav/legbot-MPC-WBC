@@ -21,32 +21,15 @@ https://github.com/user-attachments/assets/6c744851-63ee-4630-8fd7-0f04a32facda
 
 原地踏步
 
-
 https://github.com/user-attachments/assets/d9816d35-9ff2-4628-94db-f3e3b26c3b51
-
 
 行走
 
 
 sim2real演示
 
+详细演示，请参考[B站视频](https://www.bilibili.com/video/BV1oYj16NEtV/)
 
-
-
-https://github.com/user-attachments/assets/e2c993fd-7dc8-40d9-8004-b8c86cdde495
-
-
-
-https://github.com/user-attachments/assets/f4555cdc-7e73-4878-b8d8-f48de5b5ac6c
-
-
-
-
-原地踏步
-
-
-
-行走
 
 
 > PS：原项目提出MPC求解总体过程约2.7ms，但后期sim2real测试中，整体控制循环包含了MPC求解、轨迹生成、状态更新以及通信延时等等，实机时间约60ms，约15hz，因此对源代码进行了代码优化以及参数调整，例如摆腿过程等，最后可达30-40hz，满足实时性；
@@ -57,7 +40,7 @@ https://github.com/user-attachments/assets/f4555cdc-7e73-4878-b8d8-f48de5b5ac6c
 
 ### 1.1 项目来源与目标
 
-本项目是一个**四足机器人凸模型预测控制**（Convex MPC）控制栈，最初面向 **Unitree Go2** 四足机器人开发，后来在 **VBot** 四足机器人上进行了适配与部署验证。
+本项目是一个**四足机器人凸模型预测控制**（Convex MPC）控制栈，最初面向 **Unitree Go2** 四足机器人开发，后来在 **VBot** 四足机器人上进行了适配与sim2real部署验证。
 
 项目核心目标是：
 
