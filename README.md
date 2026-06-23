@@ -800,5 +800,3 @@ $$\tau_{\text{motor}} = \text{scale} \cdot \tau_{\text{model}}$$
 本项目基于 [go2-convex-mpc](https://github.com/elijah-waichong-chan/go2-convex-mpc) 开发，感谢原作者的开源贡献。
 
 
-Uploading 录屏 2026-06-09 11-55-21.mp4…
-
