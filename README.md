@@ -1,4 +1,4 @@
-# go2-convex-mpc / VBot MPC 技术文档
+# go2-convex-mpc / VBot MPC 项目分析
 
 四足机器人凸模型预测控制（Convex MPC）控制栈，最初面向 Unitree Go2 开发，后适配 VBot 机器人。
 
@@ -17,13 +17,24 @@
 ---
 sim2sim演示
 
+https://github.com/user-attachments/assets/6c744851-63ee-4630-8fd7-0f04a32facda
 
 
+
+
+https://github.com/user-attachments/assets/d9816d35-9ff2-4628-94db-f3e3b26c3b51
 
 
 
 
 sim2real演示
+
+
+
+https://github.com/user-attachments/assets/fb905573-4422-4f0c-98f6-1c43e471c815
+
+https://github.com/user-attachments/assets/5272fd4f-0830-41c2-9dce-312dbec5bef5
+
 
 
 
@@ -35,7 +46,7 @@ sim2real演示
 
 ### 1.1 项目来源与目标
 
-本项目是一个**四足机器人凸模型预测控制**（Convex MPC）控制栈，最初面向 **Unitree Go2** 四足机器人开发，后来在 `VBot` 四足机器人上进行了适配与部署验证。
+本项目是一个**四足机器人凸模型预测控制**（Convex MPC）控制栈，最初面向 **Unitree Go2** 四足机器人开发，后来在 **VBot** 四足机器人上进行了适配与部署验证。
 
 项目核心目标是：
 
