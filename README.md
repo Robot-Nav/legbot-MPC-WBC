@@ -1,6 +1,6 @@
-# go2-convex-mpc / VBot MPC 项目分析
+# go2-convex-mpc / LegBot MPC 项目分析
 
-四足机器人凸模型预测控制（Convex MPC）控制栈，最初面向 Unitree Go2 开发，后适配 VBot 机器人。
+四足机器人凸模型预测控制（Convex MPC）控制栈，最初面向 Unitree Go2 开发，后适配 LegBot 机器人。
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 [![MuJoCo](https://img.shields.io/badge/MuJoCo-2.3.3+-orange.svg)](https://github.com/google-deepmind/mujoco)
@@ -40,14 +40,14 @@
 
 ### 1.1 项目来源与目标
 
-本项目是一个**四足机器人凸模型预测控制**（Convex MPC）控制栈，最初面向 **Unitree Go2** 四足机器人开发，后来在 **VBot** 四足机器人上进行了适配与sim2real部署验证。
+本项目是一个**四足机器人凸模型预测控制**（Convex MPC）控制栈，最初面向 **Unitree Go2** 四足机器人开发，后来在 **Legbot** 四足机器人上进行了适配与sim2real部署验证。
 
 项目核心目标是：
 
 - 实现一套基于**接触力优化**的凸 MPC 控制器；
 - 在 MuJoCo 仿真环境中验证四足机器人多种运动模态（原地踏步、前进、侧移、旋转、上楼梯）；
 - 通过 Pinocchio 提供运动学、动力学、质心与足端雅可比计算；
-- 将同一套 MPC 算法部署到真实 VBot 机器人硬件上。
+- 将同一套 MPC 算法部署到真实 Legbot 机器人硬件上。
 
 > 一句话总结：**Pinocchio 负责"机器人身体计算"，MuJoCo 负责"物理世界仿真"，MPC 负责"未来接触力规划"。**
 
@@ -108,7 +108,7 @@
 └───────────────────────┬─────────────────────────────────────┘
                         ▼
 ┌─────────────────────────────────────────────────────────────┐
-│              Robot Model (PinVBotModel / PinGo2Model)        │
+│              Robot Model (PinLegbotModel / PinGo2Model)        │
 │          运动学、质心、足端、雅可比、动力学项 M/C/g           │
 └───────────────────────┬─────────────────────────────────────┘
                         ▼
@@ -369,41 +369,41 @@ go2-convex-mpc/
 │   ├── gait.py                     # 步态调度 + 落点 + 摆腿轨迹
 │   ├── leg_controller.py           # 腿部力矩控制器
 │   ├── go2_robot_data.py           # Go2 Pinocchio 模型接口
-│   ├── vbot_robot_data.py          # VBot Pinocchio 模型接口
+│   ├── Legbot_robot_data.py          # Legbot Pinocchio 模型接口
 │   ├── mujoco_model.py             # Go2 MuJoCo 接口
-│   ├── mujoco_vbot_model.py        # VBot MuJoCo 接口
-│   ├── vbot_real_affine.py         # 真实电机与模型关节的仿射变换
+│   ├── mujoco_Legbot_model.py        # Legbot MuJoCo 接口
+│   ├── Legbot_real_affine.py         # 真实电机与模型关节的仿射变换
 │   └── plot_helper.py              # 结果绘图工具
 │
 ├── examples/
-│   ├── vbot_simulation_mpc/        # VBot MuJoCo 仿真示例
-│   │   ├── ex16_vbot_mpc_trot_in_place.py
-│   │   ├── ex17_vbot_mpc_keyboard_control.py
-│   │   ├── ex18_vbot_mpc_stairs_keyboard_control.py
-│   │   └── ex23_vbot_ex35_forward_walk_sim.py
-│   ├── real_mpc_experiments/       # 真实 VBot 机器人实验脚本
-│   │   ├── EX29_vbot_dds_lowstate_monitor.py
-│   │   ├── EX30_vbot_real_mpc_monitor.py
-│   │   ├── EX31_vbot_real_mpc_torque_test.py
-│   │   ├── EX33B_vbot_dds_stand_mpc_overlay.py
-│   │   └── EX34_vbot_dds_real_mpc_state_estimator.py
-│   └── vbot_real_affine/           # 真实电机标定与测试
+│   ├── Legbot_simulation_mpc/        # Legbot MuJoCo 仿真示例
+│   │   ├── ex16_Legbot_mpc_trot_in_place.py
+│   │   ├── ex17_Legbot_mpc_keyboard_control.py
+│   │   ├── ex18_Legbot_mpc_stairs_keyboard_control.py
+│   │   └── ex23_Legbot_ex35_forward_walk_sim.py
+│   ├── real_mpc_experiments/       # 真实 Legbot 机器人实验脚本
+│   │   ├── EX29_Legbot_dds_lowstate_monitor.py
+│   │   ├── EX30_Legbot_real_mpc_monitor.py
+│   │   ├── EX31_Legbot_real_mpc_torque_test.py
+│   │   ├── EX33B_Legbot_dds_stand_mpc_overlay.py
+│   │   └── EX34_Legbot_dds_real_mpc_state_estimator.py
+│   └── Legbot_real_affine/           # 真实电机标定与测试
 │
 ├── models/
 │   ├── URDF/go2_description/       # Go2 URDF 模型
 │   ├── MJCF/go2/                   # Go2 MuJoCo 场景
-│   └── MJCF/vbot/                  # VBot MuJoCo / Pinocchio 模型
+│   └── MJCF/Legbot/                  # Legbot MuJoCo / Pinocchio 模型
 │
 ├── configs/                        # YAML 配置文件
 │   ├── ex34_forward_walk_slow_imu.yaml
 │   ├── ex34_trot_final_fast_imu.yaml
 │   ├── ex36_trot_mpc_swing_force_slow.yaml
-│   └── vbot_real_joint_affine.yaml
+│   └── Legbot_real_joint_affine.yaml
 │
 ├── environment.yml                 # Conda 环境配置
 ├── pyproject.toml                  # Python 包配置
 ├── README.md                       # 英文项目说明
-├── VBOT_MPC_WORKSPACE_NOTES.md     # VBot 工作空间说明
+├── Legbot_MPC_WORKSPACE_NOTES.md     # Legbot 工作空间说明
 └── TECHNICAL_DOCUMENTATION_ZH.md   # 本技术文档
 ```
 
@@ -415,16 +415,16 @@ go2-convex-mpc/
 | `src/convex_mpc/com_trajectory.py` | 根据速度指令生成参考轨迹，计算 $\mathbf{A}_d$、$\mathbf{B}_d[k]$、$\mathbf{g}_d$。 |
 | `src/convex_mpc/gait.py` | 生成 contact table、Raibert 落点、minimum-jerk 摆腿轨迹。 |
 | `src/convex_mpc/leg_controller.py` | 支撑相力矩映射、摆动相阻抗控制。 |
-| `src/convex_mpc/vbot_robot_data.py` | VBot Pinocchio 模型接口，含运动学、雅可比、质心、动力学。 |
-| `src/convex_mpc/mujoco_vbot_model.py` | VBot MuJoCo 接口，状态同步与力矩下发。 |
-| `src/convex_mpc/vbot_real_affine.py` | 真实电机反馈与模型关节之间的 scale/bias 仿射变换。 |
+| `src/convex_mpc/Legbot_robot_data.py` | Legbot Pinocchio 模型接口，含运动学、雅可比、质心、动力学。 |
+| `src/convex_mpc/mujoco_Legbot_model.py` | Legbot MuJoCo 接口，状态同步与力矩下发。 |
+| `src/convex_mpc/Legbot_real_affine.py` | 真实电机反馈与模型关节之间的 scale/bias 仿射变换。 |
 
 ### 6.3 坐标系与向量约定
 
 - **世界坐标系**：$x$ 前，$y$ 左，$z$ 上；
 - **机体坐标系**：与机体固连，base 坐标；
 - **力矩/关节顺序**（MPC 内部）：`[FL, FR, RL, RR]`，每条腿 `[hip, thigh, calf]`；
-- **DDS/CAN 真机顺序**：`[FR, FL, RR, RL]`，由 `vbot_real_affine.py` 负责转换。
+- **DDS/CAN 真机顺序**：`[FR, FL, RR, RL]`，由 `Legbot_real_affine.py` 负责转换。
 
 ---
 
@@ -467,30 +467,30 @@ print("convex_mpc: OK")
 PY
 ```
 
-### 7.2 仿真示例（VBot）
+### 7.2 仿真示例（Legbot）
 
 #### 原地 Trot
 
 ```bash
-python3 examples/vbot_simulation_mpc/ex16_vbot_mpc_trot_in_place.py
+python3 examples/Legbot_simulation_mpc/ex16_Legbot_mpc_trot_in_place.py
 ```
 
 回放：
 
 ```bash
-VBOT_MPC_REPLAY=1 python3 examples/vbot_simulation_mpc/ex16_vbot_mpc_trot_in_place.py
+Legbot_MPC_REPLAY=1 python3 examples/Legbot_simulation_mpc/ex16_Legbot_mpc_trot_in_place.py
 ```
 
 绘图：
 
 ```bash
-VBOT_MPC_PLOTS=1 python3 examples/vbot_simulation_mpc/ex16_vbot_mpc_trot_in_place.py
+Legbot_MPC_PLOTS=1 python3 examples/Legbot_simulation_mpc/ex16_Legbot_mpc_trot_in_place.py
 ```
 
 #### 键盘控制
 
 ```bash
-python3 examples/vbot_simulation_mpc/ex17_vbot_mpc_keyboard_control.py
+python3 examples/Legbot_simulation_mpc/ex17_Legbot_mpc_keyboard_control.py
 ```
 
 按键：
@@ -507,7 +507,7 @@ python3 examples/vbot_simulation_mpc/ex17_vbot_mpc_keyboard_control.py
 #### 前进走仿真（EX35 真机逻辑镜像）
 
 ```bash
-python3 examples/vbot_simulation_mpc/ex23_vbot_ex35_forward_walk_sim.py \
+python3 examples/Legbot_simulation_mpc/ex23_Legbot_ex35_forward_walk_sim.py \
   --duration 6 \
   --x-vel 0.03
 ```
@@ -515,7 +515,7 @@ python3 examples/vbot_simulation_mpc/ex23_vbot_ex35_forward_walk_sim.py \
 带可视化：
 
 ```bash
-python3 examples/vbot_simulation_mpc/ex23_vbot_ex35_forward_walk_sim.py \
+python3 examples/Legbot_simulation_mpc/ex23_Legbot_ex35_forward_walk_sim.py \
   --duration 8 \
   --x-vel 0.03 \
   --viewer \
@@ -525,26 +525,26 @@ python3 examples/vbot_simulation_mpc/ex23_vbot_ex35_forward_walk_sim.py \
 #### 楼梯键盘控制
 
 ```bash
-python3 examples/vbot_simulation_mpc/ex18_vbot_mpc_stairs_keyboard_control.py
+python3 examples/Legbot_simulation_mpc/ex18_Legbot_mpc_stairs_keyboard_control.py
 ```
 
-### 7.3 真实 VBot 机器人实验
+### 7.3 真实 Legbot 机器人实验
 
 > 真机实验存在安全风险，必须按顺序逐步验证。
 
 推荐调试顺序：
 
-1. `EX29_vbot_dds_lowstate_monitor.py`：只读 lowstate，验证通信与反馈映射；
-2. `EX30_vbot_real_mpc_monitor.py`：运行 MPC 但不发送力矩；
-3. `EX31_vbot_real_mpc_torque_test.py`：悬空低力矩测试；
-4. `EX33B_vbot_dds_stand_mpc_overlay.py`：站立 MPC overlay；
-5. `EX34_vbot_dds_real_mpc_state_estimator.py`：完整 MPC 状态估计 + all-stance；
+1. `EX29_Legbot_dds_lowstate_monitor.py`：只读 lowstate，验证通信与反馈映射；
+2. `EX30_Legbot_real_mpc_monitor.py`：运行 MPC 但不发送力矩；
+3. `EX31_Legbot_real_mpc_torque_test.py`：悬空低力矩测试；
+4. `EX33B_Legbot_dds_stand_mpc_overlay.py`：站立 MPC overlay；
+5. `EX34_Legbot_dds_real_mpc_state_estimator.py`：完整 MPC 状态估计 + all-stance；
 6. 确认稳定后再开启 trot/swing。
 
 #### 只读监控（EX29）
 
 ```bash
-python3 examples/real_mpc_experiments/EX29_vbot_dds_lowstate_monitor.py \
+python3 examples/real_mpc_experiments/EX29_Legbot_dds_lowstate_monitor.py \
   --network lo \
   --duration 5 \
   --prone-calibrate-on-start
@@ -553,7 +553,7 @@ python3 examples/real_mpc_experiments/EX29_vbot_dds_lowstate_monitor.py \
 #### MPC 监控但不使能（EX30）
 
 ```bash
-python3 examples/real_mpc_experiments/EX30_vbot_real_mpc_monitor.py \
+python3 examples/real_mpc_experiments/EX30_Legbot_real_mpc_monitor.py \
   --duration 10 \
   --prone-calibrate-on-start
 ```
@@ -561,8 +561,8 @@ python3 examples/real_mpc_experiments/EX30_vbot_real_mpc_monitor.py \
 #### 悬空低力矩测试（EX31）
 
 ```bash
-python3 examples/real_mpc_experiments/EX31_vbot_real_mpc_torque_test.py \
-  --affine configs/vbot_real_joint_affine.yaml \
+python3 examples/real_mpc_experiments/EX31_Legbot_real_mpc_torque_test.py \
+  --affine configs/Legbot_real_joint_affine.yaml \
   --duration 3 \
   --mpc-hz 10 \
   --cmd-hz 100 \
@@ -577,7 +577,7 @@ python3 examples/real_mpc_experiments/EX31_vbot_real_mpc_torque_test.py \
 #### 站立 MPC overlay（EX33B）
 
 ```bash
-python3 examples/real_mpc_experiments/EX33B_vbot_dds_stand_mpc_overlay.py \
+python3 examples/real_mpc_experiments/EX33B_Legbot_dds_stand_mpc_overlay.py \
   --network lo \
   --target-pose stand \
   --prone-calibrate-on-start \
@@ -619,7 +619,7 @@ python3 examples/real_mpc_experiments/EX33B_vbot_dds_stand_mpc_overlay.py \
 #### 真实状态 MPC（EX34）
 
 ```bash
-python3 examples/real_mpc_experiments/EX34_vbot_dds_real_mpc_state_estimator.py \
+python3 examples/real_mpc_experiments/EX34_Legbot_dds_real_mpc_state_estimator.py \
   --network lo \
   --target-pose stand \
   --prone-calibrate-on-start \
@@ -706,7 +706,7 @@ KP_SWING = diag([400, 400, 400])
 KD_SWING = diag([75, 75, 75])
 ```
 
-### 8.5 VBot 仿真力矩限幅
+### 8.5 Legbot 仿真力矩限幅
 
 ```python
 TAU_LIM = 0.9 * [17, 17, 34] * 4 legs
@@ -728,7 +728,7 @@ $$q_{\text{model}} = \text{scale} \cdot q_{\text{motor}} - \text{bias}$$
 
 $$\tau_{\text{motor}} = \text{scale} \cdot \tau_{\text{model}}$$
 
-相关配置见 `configs/vbot_real_joint_affine.yaml`。
+相关配置见 `configs/Legbot_real_joint_affine.yaml`。
 
 ### 9.2 状态估计
 
@@ -774,7 +774,7 @@ $$\tau_{\text{motor}} = \text{scale} \cdot \tau_{\text{model}}$$
 ### 10.2 实物部署前 checklist
 
 - 电机方向、零点、力矩方向已验证；
-- 仿射标定文件 `vbot_real_joint_affine.yaml` 已标定；
+- 仿射标定文件 `Legbot_real_joint_affine.yaml` 已标定；
 - 急停、通信超时、力矩限幅、关节限位保护已启用；
 - 先在悬空/吊绳/保护架下测试；
 - 从 all-stance 站立开始，再逐步开启 swing；
@@ -791,7 +791,7 @@ $$\tau_{\text{motor}} = \text{scale} \cdot \tau_{\text{model}}$$
 - CasADi：https://web.casadi.org/
 - OSQP：https://osqp.org/
 
-本项目最初作为 UC Berkeley MEng 机械工程顶点项目开发，后续适配至 VBot 真实四足机器人平台。
+本项目最初作为 UC Berkeley MEng 机械工程顶点项目开发，后续适配至 Legbot 真实四足机器人平台。
 
 ---
 
