@@ -1,12 +1,13 @@
-# go2-convex-mpc / LegBot MPC 项目分析
+# <div align="center">go2-convex-mpc / LegBot MPC 项目分析</div>
 
-四足机器人凸模型预测控制（Convex MPC）控制栈，最初面向 Unitree Go2 开发，后适配 LegBot 机器人。
+<div align="center">四足机器人凸模型预测控制（Convex MPC）控制栈，最初面向 Unitree Go2 开发，后适配 LegBot 机器人。
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 [![MuJoCo](https://img.shields.io/badge/MuJoCo-2.3.3+-orange.svg)](https://github.com/google-deepmind/mujoco)
 [![Pinocchio](https://img.shields.io/badge/Pinocchio-2.6.20+-green.svg)](https://github.com/stack-of-tasks/pinocchio)
 [![CasADi](https://img.shields.io/badge/CasADi-3.6.3+-red.svg)](https://web.casadi.org/)
 [![OSQP](https://img.shields.io/badge/OSQP-0.6.2+-yellow.svg)](https://osqp.org/)
+</div>
 
 ---
 
