@@ -1,0 +1,6 @@
+# Generated on Mon Jun 29 16:15:35 2026
+__collection-name__: test-parameters
+
+test_double : 2e-09
+test_float  : 1
+test_integer: 8

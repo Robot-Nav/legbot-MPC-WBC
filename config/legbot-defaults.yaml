@@ -1,0 +1,27 @@
+# LegBot defaults for the Cheetah-Software control stack.
+# Nominal body/COM height is 0.2775 m. The current RobotControlParameters set
+# does not expose a body-height parameter, so the StandUp/FSM LegBot branch uses
+# this value directly.
+__collection-name__: robot-parameters
+
+controller_dt     : 0.001
+control_mode      : 1
+myValue           : 2222
+
+stand_kd_cartesian: [3.0, 3.0, 3.0]
+stand_kp_cartesian: [80, 80, 80]
+testValue         : 23
+cheater_mode      : 1
+
+foot_height_sensor_noise      :  0.001
+foot_process_noise_position   :  0.002
+foot_sensor_noise_position    :  0.001
+foot_sensor_noise_velocity    :  0.1
+imu_process_noise_position    :  0.02
+imu_process_noise_velocity    :  0.02
+
+kpCOM: [50, 50, 50]
+kdCOM: [10, 10, 10]
+kpBase: [260, 180, 120]
+kdBase: [18, 10, 10]
+use_rc: 0

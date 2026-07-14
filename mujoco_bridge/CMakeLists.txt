@@ -1,0 +1,28 @@
+include_directories(${PROJECT_SOURCE_DIR})
+include_directories(${PROJECT_SOURCE_DIR}/common/include)
+include_directories(${PROJECT_SOURCE_DIR}/robot/include)
+include_directories(${MUJOCO_INCLUDE_DIR})
+find_package(OpenGL REQUIRED)
+find_package(PkgConfig REQUIRED)
+pkg_check_modules(GLFW3 REQUIRED glfw3)
+include_directories(${GLFW3_INCLUDE_DIRS})
+if(EXISTS ${LCM_TYPES_CPP_DIR})
+  include_directories(${LCM_TYPES_CPP_DIR})
+endif()
+if(LCM_INCLUDE_DIR)
+  include_directories(${LCM_INCLUDE_DIR})
+  if(EXISTS ${LCM_INCLUDE_DIR}/lcm)
+    include_directories(${LCM_INCLUDE_DIR}/lcm)
+  endif()
+endif()
+include_directories(${CMAKE_BINARY_DIR})
+
+add_executable(mujoco_legbot_sim LegBotMujocoSim.cpp)
+target_compile_features(mujoco_legbot_sim PRIVATE cxx_std_17)
+target_link_libraries(mujoco_legbot_sim biomimetics pthread rt ${MUJOCO_LIBRARY}
+    ${GLFW3_LIBRARIES} ${OPENGL_LIBRARIES})
+
+add_executable(mujoco_legbot_key3_dryrun_sim LegBotMujocoKey3DryrunSim.cpp)
+target_compile_features(mujoco_legbot_key3_dryrun_sim PRIVATE cxx_std_17)
+target_link_libraries(mujoco_legbot_key3_dryrun_sim biomimetics pthread rt
+    ${MUJOCO_LIBRARY} ${GLFW3_LIBRARIES} ${OPENGL_LIBRARIES})

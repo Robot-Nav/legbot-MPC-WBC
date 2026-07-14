@@ -1,0 +1,82 @@
+# LegBot MIT_Controller user parameters.
+__collection-name__: user-parameters
+
+Kd_joint          : [1.0, 0.4, 0.4]
+Kp_joint          : [5, 5, 5]
+
+Kp_body           : [70, 70, 90]
+Kd_body           : [12, 12, 14]
+
+Kp_foot           : [420, 420, 90]
+Kd_foot           : [6, 6, 6]
+
+Kp_ori            : [160, 120, 100]
+Kd_ori            : [18, 12, 10]
+
+cmpc_gait         : 4
+cmpc_x_drag       : 2
+cmpc_use_sparse   : 0
+cmpc_bonus_swing  : 0
+legbot_body_pitch_bias_rad : 0.0
+jcqp_alpha        : 1.5
+jcqp_max_iter     : 10000
+jcqp_rho          : 1e-07
+jcqp_sigma        : 1e-08
+jcqp_terminate    : 0.1
+use_jcqp          : 0
+use_wbc           : 1
+
+Swing_Kp_cartesian : [320, 320, 80]
+Swing_Kd_cartesian : [5.0, 5.0, 5.0]
+Swing_Kp_joint     : [0, 0, 0]
+Swing_Kd_joint     : [0.2, 0.2, 0.2]
+Swing_step_offset  : [0, 0.045, -0.003]
+Swing_traj_height  : 0.06
+Swing_use_tau_ff   : 0
+
+Q_pos             : [20, 20, 12000]
+Q_vel             : [0, 0, 0]
+Q_ori             : [1400, 1700, 850]
+Q_ang             : [35, 45, 12]
+
+R_control         : 1.3
+R_prev            : 2.2
+
+two_leg_orient    : [0.16, 7.5, 0.0]
+stance_legs       : 4
+
+RPC_Q_p             : [8000, 8000, 80000]
+RPC_Q_theta         : [4500, 8500, 2200]
+RPC_Q_dp            : [2200, 2200, 500]
+RPC_Q_dtheta        : [3, 3, 45]
+RPC_R_r             : [350000, 350000, 350000]
+RPC_R_f             : [0.001, 0.001, 0.001]
+RPC_H_r_trans       : [1, 2, 1]
+RPC_H_r_rot         : [1, 1, 0]
+RPC_H_theta0        : [1.0, 0, 0]
+RPC_H_phi0          : [-0.2, 0.02, 0]
+RPC_mass            : 9.016326
+RPC_inertia         : [0.060632, 0.144345, 0.125819]
+RPC_gravity         : [0, 0, -9.81]
+RPC_mu              : 0.5
+RPC_filter          : [0.5, 0.1, 0]
+RPC_use_pred_comp   : 1
+RPC_use_async_filt  : 1
+RPC_visualize_pred  : 1
+RPC_use_separate    : 1
+
+des_p             : [0, 0, 0.2775]
+des_theta         : [0, 0, 0]
+des_dp            : [0, 0, 0]
+des_dtheta        : [0, 0, 0]
+des_theta_max     : [0, 0.3, 0]
+des_dp_max        : [1.0, 0.3, 0]
+des_dtheta_max    : [0, 0, 2.0]
+
+gait_type             : 4
+gait_period_time      : 0.54
+gait_switching_phase  : 0.5
+gait_override         : 4
+gait_max_leg_angle    : 13
+gait_max_stance_time  : 0.28
+gait_min_stance_time  : 0.12

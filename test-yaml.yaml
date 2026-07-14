@@ -1,0 +1,5 @@
+# Generated on Mon Jun 29 16:15:35 2026
+__collection-name__: vector-params
+
+test_double: [0.01, 0.001, -2.23e-07]
+test_float : [1, 2.2, 54.45]
